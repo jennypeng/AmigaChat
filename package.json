@@ -1,0 +1,11 @@
+{
+    "name": "AmigaChat",
+    "version": "0.0.0",
+    "description": "Amiga themed real time chat for retro fun",
+    "dependencies": {
+        "socket.io": "latest",
+        "express": "latest",
+        "jade": "latest"
+    },
+    "author": "Jenny Peng"
+}

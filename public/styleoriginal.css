@@ -1,0 +1,83 @@
+.header {
+    height: 24px;
+    width: 516px;
+}
+sysmsg{
+	font-family: 'Amiga';
+	font-size: 9px;
+	color: #091F3E;
+}
+.scrollbar{
+	float: right;
+	padding-left: 200px;
+}
+#content{
+	margin-top:-3px;
+	border-style:solid;
+	border-width: 5px;
+	border-color: #FFF;
+	height: 210px;
+	width: 505.9px; 
+	border-color: #FFF
+	margin: 0 0 20px 0;
+	//overflow-y: scroll;
+	text-align:left;
+	word-wrap: break-word;
+	overflow: auto;
+  	overflow-y: hidden;
+}
+#top{
+	background-color: #FFF;
+	width:auto;
+	height:23px;
+	margin-bottom: 25px;
+}
+html{
+	font-family: 'Amiga';
+	font-size: 9px;
+	color: #FFF;
+}
+#text{
+	border-style:solid;
+	border-width: 5px;
+	border-color: #FFF;
+	height:15px;
+	width: 506px;
+	margin-top: -5px;
+}
+body {
+	background-color: #1854AE;
+	margin-top: 0px;
+}
+@font-face {
+	font-family: 'Amiga';
+	src: url('amiga4ever pro2.ttf');
+}
+p{
+	font-family: Amiga;
+	color: #FFF;
+	font-size: 23px;
+}
+.controls{
+	margin-top: -2px;
+
+}
+#input{
+	margin-left: 2px;
+	border: 0;
+    outline: 0;
+    font-size: 8px;
+	background: transparent;
+	font-family: 'Amiga';
+	color: #FFF;
+	width:481px
+}
+#send{
+	background: url(send.png);
+	background-repeat:	no-repeat;
+	background-color:	transparent;
+	border: none;
+	width: 23px;
+	height: 16px;
+	margin-top: 2px;
+}

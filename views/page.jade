@@ -1,0 +1,19 @@
+doctype
+html
+    head
+        title= "Amiga Chat"
+        link(rel='stylesheet', href='/styleoriginal.css')
+        script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+        script(src='/chat.js')
+        script(src='/socket.io/socket.io.js')
+
+    body
+    center
+        p(id = "title")  AMIGA CHAT 
+        img(id = "header", src="http://i.imgur.com/4i3AevH.png")
+        br
+        #content
+        #text
+            .controls
+            input#input
+            input#send(type='button')
