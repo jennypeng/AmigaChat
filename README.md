@@ -2,6 +2,9 @@ AmigaChat
 =========
 
 Amiga themed real time chat for retro fun using Express, Jade, Socket.IO and NodeJS.
+
+Screenshot:
+=========
 ![screenshot](/screenshot.png)
 
 To do:
