@@ -78,6 +78,9 @@ window.onload = function() {
             var msg = input.join(" ");
             socket.emit('sendpm', {receiver: to, msg: msg, sender: userName});
             break;
+            case 'users':
+            socket.emit('users', {});
+            break;
             case 'help':
             $( "#content" ).append("<sysmsg>SystemMsg:<br>* /username [name] to change nickname <br>* /room [roomname] to change rooms <br>* /users to get list of users <br>"
                 + "* /pm [user] [msg] to private message user with msg contents<br></sysmsg>");

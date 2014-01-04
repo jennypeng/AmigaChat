@@ -4,7 +4,8 @@ var app = require('express')();
 var port = 3000;
 var userNum = 1;
 var currentUsers = {};
-var takenNames = []; 
+var takenNames = [];
+var userCount = 0;
 
 app.use(express.static(__dirname + '/public'));
 var io = require('socket.io').listen(app.listen(port));
@@ -20,10 +21,12 @@ app.get("/", function(req, res){
 
 io.sockets.on('connection', function (socket) {
     console.log("connected: " + socket.id);
+    userCount ++;
     socket.on('disconnect', function() { 
         console.log(socket.id + ' disconnected');
         //remove user from db
         var index = takenNames.indexOf(currentUsers[socket.id]);
+        userCount --;
         delete takenNames[index];
         delete currentUsers[socket.id];
     });
@@ -36,6 +39,14 @@ io.sockets.on('connection', function (socket) {
     io.sockets.emit('message' , {message: "<sysmsg> SystemMsg: User" + userNum + " has joined the chat.</sysmsg>"});
     userNum ++;
     
+    //handle request for listing of users
+    socket.on('users', function(data) {
+        socket.emit('message', { message: '<sysmsg>SystemMsg: There are currently ' + userCount + ' total active users:</sysmsg>'});
+        for (var key in currentUsers) {
+            socket.emit('message', {message: '<sysmsg>* ' + currentUsers[key] + '</sysmsg>'});
+        }
+    });
+
     //handle private messages
     socket.on('sendpm', function (data) {
         var userExists = false;
