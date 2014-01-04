@@ -10,7 +10,7 @@ Screenshot:
 To do:
 =========
 1. More command parsing, including PM and room changing.
-2. Sound effects.
+2. <del>Sound effects.</del>
 3. Prevent script attacks in user input.
 
 
