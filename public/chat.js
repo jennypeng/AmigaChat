@@ -31,10 +31,10 @@ window.onload = function() {
                 sound.play();
                 $( "#content" ).append("<pm>PM from " + data.from + ": " + data.msg + "</pm><br>" );
             }
-            content.scrollTop = content.scrollHeight;
         } else {
-            console.log("There is a problem");
+            $( "#content" ).append("<sysmsg>SystemMsg: Cannot pm empty message.</sysmsg><br>" );
         }
+        content.scrollTop = content.scrollHeight;
     });
     //event receiver for incoming messages
     socket.on('message', function (data) {

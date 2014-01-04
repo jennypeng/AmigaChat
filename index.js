@@ -34,14 +34,14 @@ io.sockets.on('connection', function (socket) {
     //user initialization
     socket.emit('changeName', {name: "User" + userNum, joined: "True"});
     currentUsers[socket.id] = "User" + userNum;
-    socket.emit('message', { message: '<sysmsg> SystemMsg: welcome to the chat</sysmsg>' , intro: true});
+    socket.emit('message', { message: '<sysmsg> SystemMsg: Welcome to the lobby.</sysmsg>' , intro: true});
     socket.emit('message', { message: '<sysmsg> SystemMsg: type \/help for a list of commands</sysmsg>', intro: true});
     io.sockets.emit('message' , {message: "<sysmsg> SystemMsg: User" + userNum + " has joined the chat.</sysmsg>"});
     userNum ++;
     
     //handle request for listing of users
     socket.on('users', function(data) {
-        socket.emit('message', { message: '<sysmsg>SystemMsg: There are currently ' + userCount + ' total active users:</sysmsg>'});
+        socket.emit('message', { message: '<sysmsg>SystemMsg: There are currently ' + userCount + ' users in the lobby:</sysmsg>'});
         for (var key in currentUsers) {
             socket.emit('message', {message: '<sysmsg>* ' + currentUsers[key] + '</sysmsg>'});
         }
