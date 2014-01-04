@@ -7,6 +7,11 @@ sysmsg{
 	font-size: 9px;
 	color: #091F3E;
 }
+pm{
+	font-family: 'Amiga';
+	font-size: 9px;
+	color: #992E35;
+}
 .scrollbar{
 	float: right;
 	padding-left: 200px;

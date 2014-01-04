@@ -1,5 +1,6 @@
 window.onload = function() {
     document.createElement('sysmsg');
+    document.createElement('pm');
     var socket = io.connect("http://localhost:3000/");
     var input = document.getElementById("input");
     var sendButton = document.getElementById("send");
@@ -17,9 +18,24 @@ window.onload = function() {
             
         } else {
             $( "#content" ).append("<sysmsg>SystemMsg: nickname " + data.name + " is not avaliable.<br></sysmsg>");
+            content.scrollTop = content.scrollHeight;
         }
     });
 
+    //event receiver for incoming private messages
+    socket.on('pm', function (data) {
+        if (data.msg) {
+            if (data.to) {
+                $( "#content" ).append("<pm>PM to " + data.to + ": "  + data.msg + "</pm><br>");
+            } else {
+                sound.play();
+                $( "#content" ).append("<pm>PM from " + data.from + ": " + data.msg + "</pm><br>" );
+            }
+            content.scrollTop = content.scrollHeight;
+        } else {
+            console.log("There is a problem");
+        }
+    });
     //event receiver for incoming messages
     socket.on('message', function (data) {
         if(data.message) {
@@ -55,12 +71,21 @@ window.onload = function() {
             input.shift();
             socket.emit('requestName', {name: input.join(' ')});
             break;
+            case 'pm':
+            input.shift();
+            var to = input[0];
+            input.shift();
+            var msg = input.join(" ");
+            socket.emit('sendpm', {receiver: to, msg: msg, sender: userName});
+            break;
             case 'help':
             $( "#content" ).append("<sysmsg>SystemMsg:<br>* /username [name] to change nickname <br>* /room [roomname] to change rooms <br>* /users to get list of users <br>"
-                + "* /pm [user] to private message user <br></sysmsg>");
+                + "* /pm [user] [msg] to private message user with msg contents<br></sysmsg>");
+            content.scrollTop = content.scrollHeight;
             break;
             default:
             $( "#content" ).append("<sysmsg>SystemMsg: " + command + " is not a valid command. </sysmsg><br>"); 
+            content.scrollTop = content.scrollHeight;
             return input;
             break;
         }
