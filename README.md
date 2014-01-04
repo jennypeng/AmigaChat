@@ -16,5 +16,6 @@ To do:
 5. Prevent script attacks in user input.
 6. Add pokes
 7. Link embedding
+8. Deploy to Heroku
 
 
