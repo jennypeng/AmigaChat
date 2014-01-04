@@ -9,8 +9,10 @@ Screenshot:
 
 To do:
 =========
-1. More command parsing, including PM and room changing.
-2. <del>Sound effects.</del>
-3. Prevent script attacks in user input.
+1. <del>Private Messages</del>
+2. Rooms
+3. <del>User listing </del>
+4. <del>Sound effects</del>
+5. Prevent script attacks in user input.
 
 
